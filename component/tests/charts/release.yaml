@@ -1,0 +1,34 @@
+gitcall_migrations:
+    # [REQUIRED]: object.
+    config:
+        # [REQUIRED]: object. GitCall Migrations
+        host: 'aDbHost'
+        port: 5555
+        migrator_username: 'aMigratorUsername'
+        migrator_password: 'aMigratorPassword'
+        dir: "migrations/gitcall"
+        # [REQUIRED]: string.
+        db: 'aGitcallDb'
+        # [REQUIRED]: string.
+    helm:
+        # [REQUIRED]: object.
+        image_pull_secrets: []
+        # [REQUIRED]: array.
+release:
+    name: 'gitcall_migrations_release'
+    helm:
+        enabled: true
+        chart:
+            version: '0.1.2'
+            description: 'aDescription'
+        context: ''
+        namespace: 'aNamespace'
+        release: 'aRelease'
+        deploy: ['gitcall_migrations']
+    require:
+        gitcall_migrations: 'aVersion'
+    repositories:
+        gitcall_migrations:
+            source: 'local'
+            local:
+                path: '../../'

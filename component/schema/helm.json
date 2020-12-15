@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schema.corezoid.com/gitcall/gitcall-migrations/helm.json",
+  "type": "object",
+  "required": [ "gitcall_migrations" ],
+  "properties": {
+    "gitcall_migrations": {
+      "type": "object",
+      "required": [
+         "helm"
+      ],
+      "properties": {
+        "helm": {
+          "type": "object",
+          "required": ["image_pull_secrets"],
+          "properties": {
+            "image_pull_secrets": {
+              "type": "array",
+              "default": [],
+              "items": { "type": "string", "minLength": 1, "maxLength": 10000}
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

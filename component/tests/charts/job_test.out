@@ -1,0 +1,39 @@
+# Source: gitcall_migrations_release/charts/gitcall_migrations/templates/job.yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: RELEASE-NAME-gitcall-migrations-job
+  annotations:
+    "helm.sh/hook": pre-install,pre-upgrade
+    "helm.sh/hook-delete-policy": hook-succeeded
+  labels:
+    release: "RELEASE-NAME"
+    app: "gitcall"
+    tier: "migrations"
+spec:
+  activeDeadlineSeconds: 180 # 3min
+  ttlSecondsAfterFinished: 360 # 6min
+  template:
+    metadata:
+      labels:
+        release: "RELEASE-NAME"
+        app: "gitcall"
+        tier: "migrations"
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: main
+        image: docker-hub.middleware.biz/gitcall/gitcall-migrations:aVersion
+        env:
+          - name: MIGRATOR_USERNAME
+            value: "aMigratorUsername"
+          - name: MIGRATOR_PASSWORD
+            value: "aMigratorPassword"
+          - name: DB
+            value: "aGitcallDb"
+          - name: HOST
+            value: "aDbHost"
+          - name: PORT
+            value: "5555"
+          - name: DIR
+            value: "migrations/gitcall"

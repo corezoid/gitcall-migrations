@@ -1,0 +1,3 @@
+level=error msg="gitcall_migrations.config.db: String length must be greater than or equal to 1"
+level=error msg="gitcall_migrations.config.host: String length must be greater than or equal to 1"
+level=error msg="gitcall_migrations.config.migrator_password: String length must be greater than or equal to 1"

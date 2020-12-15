@@ -1,0 +1,22 @@
+gitcall_migrations:
+    # [REQUIRED]: object.
+    config:
+        # [REQUIRED]: object. GitCall Migrations
+        host: 'aDbHost'
+        port: 5555
+        # [REQUIRED]: string.
+        migrator_username: 'aMigratorUsername'
+        migrator_password: 'aMigratorPassword'
+        dir: "migrations/gitcall"
+        # [REQUIRED]: string.
+        db: 'aGitcallDb'
+        # [REQUIRED]: string.
+release:
+    name: 'gitcall_migrations_release'
+    require:
+        gitcall_migrations: 'aVersion'
+    repositories:
+        gitcall_migrations:
+            source: 'local'
+            local:
+                path: '../../'

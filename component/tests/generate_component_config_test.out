@@ -1,0 +1,20 @@
+# [REQUIRED]: object.
+gitcall_migrations:
+    # [REQUIRED]: object.
+    # GitCall Migrations
+    config:
+        # [REQUIRED]: string.
+        # Database to apply migrations in
+        db: ''
+        # Migrations directory
+        dir: ''
+        # [REQUIRED]: string.
+        # Database host
+        host: ''
+        # [REQUIRED]: string.
+        migrator_password: ''
+        # [REQUIRED]: string.
+        migrator_username: 'gitcall_migrator'
+        # [REQUIRED]: number.
+        # Database port
+        port: 5432

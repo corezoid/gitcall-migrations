@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schema.corezoid.com/gitcall/gitcall-migrations/main.json",
+  "type": "object",
+  "required": [ "gitcall_migrations" ],
+  "properties": {
+    "gitcall_migrations": {
+      "type": "object",
+      "required": ["config"],
+      "properties": {
+        "config": {
+          "type": "object",
+          "description":  "GitCall Migrations",
+          "required": [
+            "migrator_username",
+            "migrator_password",
+            "host",
+            "port",
+            "db"
+          ],
+          "properties": {
+            "migrator_username": { "type": "string", "minLength": 1, "maxLength": 10000, "default": "gitcall_migrator" },
+            "migrator_password": { "type": "string", "minLength": 1, "maxLength": 10000, "default": "" },
+            "dir": { "type": "string", "minLength": 0, "maxLength": 10000, "default": "", "description": "Migrations directory" },
+            "host": { "type": "string", "minLength": 1, "maxLength": 10000, "default": "", "description": "Database host" },
+            "port": { "type":  "number", "min": 1, "max": 65535, "default": 5432, "description": "Database port" },
+            "db": { "type": "string", "minLength": 1, "maxLength": 10000, "default": "", "description": "Database to apply migrations in" }
+          }
+        }
+      }
+    }
+  }
+}
